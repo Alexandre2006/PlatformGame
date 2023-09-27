@@ -3,7 +3,7 @@ class SceneBase:
     def __init__(self):
         pass
 
-    def update(self):
+    def update(self, dt):
         pass
 
     def render(self):
