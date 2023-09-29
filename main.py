@@ -6,6 +6,7 @@ from sys import exit
 import globals
 
 from utils.scene_manager import SceneManager
+from scenes.title import TitleScene
 
 # Initialize globals
 globals.init()
@@ -14,9 +15,12 @@ globals.init()
 pygame.init()
 
 # Create game window
-screen_width = 800
-screen_height = 600
-globals.screen = pygame.display.set_mode((screen_width, screen_height))
+globals.SCREEN_WIDTH = 800
+globals.SCREEN_HEIGHT = 600
+globals.screen = pygame.display.set_mode((globals.SCREEN_WIDTH, globals.SCREEN_HEIGHT))
+
+# Create clock
+clock = pygame.time.Clock()
 
 # Set window caption
 pygame.display.set_caption("Platform Game")
@@ -24,11 +28,11 @@ pygame.display.set_caption("Platform Game")
 # Create scene manager
 scene_manager = SceneManager()
 
-# Create scenes (TODO)
+# Register scenes
+scene_manager.register_scene("title", TitleScene())
 
-# Register scenes (TODO)
-
-# Switch to the first scene (TODO)
+# Switch to the first scene
+scene_manager.switch_scene("title")
 
 # Game loop
 while True:
@@ -47,6 +51,8 @@ while True:
     # Render current scene 
     scene_manager.render_current_scene()
 
+    # Wait for next frame
+    clock.tick(60)
+
     # Update screen
     pygame.display.flip()
-

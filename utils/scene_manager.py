@@ -29,16 +29,16 @@ class SceneManager:
 
     def update_current_scene(self):
         if self.current_scene:
-            self.current_scene.update()
-
-    def render_current_scene(self):
-        if self.current_scene:
             # Calculate delta time
             self.current_time = pygame.time.get_ticks()
             self.delta_time = (self.current_time - self.last_time) / 1000.0
             self.last_time = self.current_time
 
-            self.current_scene.render(self.delta_time)
+            self.current_scene.update(self.delta_time)
+
+    def render_current_scene(self):
+        if self.current_scene:
+            self.current_scene.render()
 
     def handle_events(self, events):
         if self.current_scene:
