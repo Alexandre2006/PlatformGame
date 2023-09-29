@@ -1,7 +1,7 @@
-import pygame
-
 # Scene Manager
 # Written by Copilot (except unregister_scene)
+import pygame
+
 class SceneManager:
     def __init__(self):
         self.scenes = {}

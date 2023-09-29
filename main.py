@@ -1,12 +1,14 @@
-# Create base game window and run the game loop
-# ----------------------------------------------------------
+# File written by Copilot
 
 import pygame
 from pygame.locals import *
 from sys import exit
-from random import randint
+import globals
 
-from scene_manager import SceneManager
+from utils.scene_manager import SceneManager
+
+# Initialize globals
+globals.init()
 
 # Initialize pygame
 pygame.init()
@@ -14,7 +16,7 @@ pygame.init()
 # Create game window
 screen_width = 800
 screen_height = 600
-screen = pygame.display.set_mode((screen_width, screen_height))
+globals.screen = pygame.display.set_mode((screen_width, screen_height))
 
 # Set window caption
 pygame.display.set_caption("Platform Game")
