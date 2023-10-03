@@ -17,7 +17,7 @@ pygame.init()
 
 # Create game window
 globals.SCREEN_WIDTH = 800
-globals.SCREEN_HEIGHT = 600
+globals.SCREEN_HEIGHT = 800
 globals.screen = pygame.display.set_mode((globals.SCREEN_WIDTH, globals.SCREEN_HEIGHT))
 
 # Create clock

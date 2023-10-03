@@ -7,7 +7,7 @@ import globals
 class Player:
     CHARACTER_WIDTH = 80
     CHARACTER_HEIGHT = 160
-    IMAGE = pygame.image.load("./shared/player/player.png")
+    IMAGE = pygame.transform.scale(pygame.image.load("./shared/player/player.png"), (80, 160))
 
     def __init__(self):
         self.x = 0

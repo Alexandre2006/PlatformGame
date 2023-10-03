@@ -2,6 +2,7 @@
 # Entirely written by humans with assistance from Copilot (75% human, 25% AI)
 import pygame
 import globals
+from scenes.game import GameScene
 
 from utils.scene import SceneBase
 
@@ -24,18 +25,18 @@ class TitleScene(SceneBase):
 
         # Draw title
         title = self.title_font.render("ASCENT", True, (0, 0, 0))
-        globals.screen.blit(title, ((globals.SCREEN_WIDTH - self.title_font.size("ASCENT")[0]) / 2, 50))
+        globals.screen.blit(title, ((globals.SCREEN_WIDTH - self.title_font.size("ASCENT")[0]) / 2, 76))
 
         # Draw subtitle
         subtitle = self.button_font.render("A Platformer by Landon M. & Alexandre H.", True, (0, 0, 0))
-        globals.screen.blit(subtitle, ((globals.SCREEN_WIDTH - self.button_font.size("A Platformer by Landon M. & Alexandre H.")[0]) / 2, 130))
+        globals.screen.blit(subtitle, ((globals.SCREEN_WIDTH - self.button_font.size("A Platformer by Landon M. & Alexandre H.")[0]) / 2, 170))
 
         # Cursor Position
         mouse_x, mouse_y = pygame.mouse.get_pos()
 
         # Add play button
         play_button_x = (globals.SCREEN_WIDTH - self.button_font.size("Start Game")[0]) / 2
-        play_button_y = 275
+        play_button_y = 350
         play_button_width = self.button_font.size("Start Game")[0] 
         play_button_height = self.button_font.size("Start Game")[1]
 
@@ -49,6 +50,7 @@ class TitleScene(SceneBase):
         if mouse_x > play_box_x and mouse_x < play_box_x + play_box_width and mouse_y > play_box_y and mouse_y < play_box_y + play_box_height:
             play_box_color = (196, 196, 196)
             if self.mouse_prev_pressed and not self.mouse_pressed:
+                globals.scene_manager.register_scene("game", GameScene())
                 globals.scene_manager.switch_scene("game")
                 
         pygame.draw.rect(globals.screen, play_box_color, (play_box_x, play_box_y, play_box_width, play_box_height))
@@ -57,7 +59,7 @@ class TitleScene(SceneBase):
 
         # Add exit button
         exit_button_x = (globals.SCREEN_WIDTH - self.button_font.size("Quit Game")[0]) / 2
-        exit_button_y = 400
+        exit_button_y = 550
         exit_button_width = self.button_font.size("Quit Game")[0] 
         exit_button_height = self.button_font.size("Quit Game")[1]
 
