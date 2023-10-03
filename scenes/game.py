@@ -80,6 +80,10 @@ class GameScene(SceneBase):
         # Clear screen
         globals.screen.fill((255, 255, 255))
 
+        # Add background
+        background = pygame.image.load("./shared/backgrounds/title.png")
+        globals.screen.blit(background, (0, 0))
+
         # Render player
         globals.screen.blit(self.player.IMAGE, (self.player.x, self.camera.calculate_pygame_pos(self.player.y)))
 

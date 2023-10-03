@@ -8,7 +8,7 @@ from utils.scene import SceneBase
 
 class TitleScene(SceneBase):
     def __init__(self):
-        self.title_font = pygame.font.Font("./shared/fonts/Pixeboy.ttf", 128)
+        self.title_font = pygame.font.Font("./shared/fonts/Pixeboy.ttf", 160)
         self.button_font = pygame.font.Font("./shared/fonts/Pixeboy.ttf", 40)
         self.mouse_pressed = False
         self.mouse_prev_pressed = False
@@ -22,6 +22,10 @@ class TitleScene(SceneBase):
     def render(self):
         # Clear screen
         globals.screen.fill((255, 255, 255))
+
+        # Add background
+        background = pygame.image.load("./shared/backgrounds/title.png")
+        globals.screen.blit(background, (0, 0))
 
         # Draw title
         title = self.title_font.render("ASCENT", True, (0, 0, 0))
