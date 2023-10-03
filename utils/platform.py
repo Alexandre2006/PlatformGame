@@ -12,15 +12,16 @@ class Platform:
     TYPE_SPIKE = 3
 
     # Platform Images
-    IMAGE_GRASS = pygame.image.load("./shared/platforms/grass.png")
-    IMAGE_ICE = pygame.image.load("./shared/platforms/ice.png")
-    IMAGE_BOOST = pygame.image.load("./shared/platforms/boost.png")
-    IMAGE_SPIKE = pygame.image.load("./shared/platforms/spike.png")
+    IMAGE_GRASS = pygame.image.load("./shared/tiles/grass.png")
+    IMAGE_ICE = pygame.image.load("./shared/tiles/ice.png")
+    IMAGE_BOOST = pygame.image.load("./shared/tiles/boost.png")
+    IMAGE_SPIKE = pygame.image.load("./shared/tiles/spike.png")
 
     # Platform Widths
     WIDTH_THIN = 1
     WIDTH_NORMAL = 2
     WIDTH_THICK = 3
+    WIDTH_FLOOR = 10
 
     # Platform Info
     width = 80
@@ -52,5 +53,15 @@ class Platform:
         if (self.x + self.width) > 800:
             self.x = 800 - self.width
             self.x_velocity *= -1
+    
+    def getPlatformImage(self):
+        if self.type == Platform.TYPE_GRASS:
+            return Platform.IMAGE_GRASS
+        elif self.type == Platform.TYPE_ICE:
+            return Platform.IMAGE_ICE
+        elif self.type == Platform.TYPE_BOOST:
+            return Platform.IMAGE_BOOST
+        elif self.type == Platform.TYPE_SPIKE:
+            return Platform.IMAGE_SPIKE
     
 

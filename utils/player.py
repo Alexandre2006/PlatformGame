@@ -1,6 +1,7 @@
 # Player Class
 # Entirely written by humans with assistance from Copilot (75% human, 25% AI)
 
+import math
 import pygame
 import globals
 from utils.platform import Platform
@@ -11,8 +12,8 @@ class Player:
     IMAGE = pygame.transform.scale(pygame.image.load("./shared/player/player.png"), (80, 160))
 
     def __init__(self):
-        self.x = 0
-        self.y = 0
+        self.x = globals.SCREEN_WIDTH / 2
+        self.y = 400
         self.x_velocity = 0
         self.y_velocity = 0
     
@@ -34,8 +35,8 @@ class Player:
     def checkPlatformCollision(self, prev_x, prev_y, platforms):
         # Check for collision with platforms (going down)
         for i in platforms:
-            if prev_y >= i.y and self.y <= i.y and self.x <= i.x + i.width and self.x + Player.CHARACTER_WIDTH >= i.x:
-                self.y = i.y
+            if prev_y - Player.CHARACTER_HEIGHT >= i.y and self.y - Player.CHARACTER_HEIGHT <= i.y and self.x <= i.x + i.width and self.x + Player.CHARACTER_WIDTH >= i.x:
+                self.y = i.y + Player.CHARACTER_HEIGHT
                 self.y_velocity = 0
                 return True
         
@@ -59,7 +60,16 @@ class Player:
                 self.x = i.x - Player.CHARACTER_WIDTH
                 self.x_velocity = 0
                 return True
-
+    
+    def checkCanJump(self, platforms):
+        if self.checkPlatformPerfectCollision(platforms) != None:
+            return True
+    
+    def jump(self, angle):
+        angle = abs(angle)
+        self.y_velocity = (1000 * math.sin(angle))
+        self.x_velocity = 500 * math.cos(angle)
+        self.y += 1
 
     def update(self, dt, platforms):
         prev_x = self.x
@@ -76,7 +86,7 @@ class Player:
                 self.x_velocity *= 0.95
                 self.y_velocity = 0
             else:
-                self.x_velocity = 0.8
+                self.x_velocity *= 0.8
                 self.y_velocity = 0
 
         # Update position based on velocity
@@ -90,4 +100,4 @@ class Player:
         self.checkWallCollision()
 
         # Update gravity
-        self.y_velocity -= 0.5 * dt
+        self.y_velocity -= 1000 * dt

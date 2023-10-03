@@ -10,4 +10,4 @@ class Camera:
             self.y = y
     
     def calculate_pygame_pos(self, y):
-        return (y - self.y)
+        return 800 - (y - self.y)
