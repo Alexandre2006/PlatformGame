@@ -16,6 +16,7 @@ class Player:
         self.y = 400
         self.x_velocity = 0
         self.y_velocity = 0
+        self.dead = False
     
     def checkWallCollision(self):
         # Check for collision with right side of the screen
@@ -70,7 +71,7 @@ class Player:
     
     def jump(self, angle):
         angle = abs(angle)
-        self.y_velocity = (1000 * math.sin(angle))
+        self.y_velocity = (1250 * math.sin(angle))
         self.x_velocity = 500 * math.cos(angle)
         self.y += 1
 
@@ -84,7 +85,7 @@ class Player:
             if perfect_collision.type == Platform.TYPE_BOOST:
                 self.y_velocity = 20
             elif perfect_collision.type == Platform.TYPE_SPIKE:
-                globals.scene_manager.switch_scene("title")
+                self.dead = True
             elif perfect_collision.type == Platform.TYPE_ICE:
                 self.x_velocity *= 0.95
                 self.y_velocity = 0

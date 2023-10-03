@@ -5,6 +5,7 @@ import pygame
 from pygame.locals import *
 from sys import exit
 import globals
+from scenes.death import DeathScene
 
 from utils.scene_manager import SceneManager
 from scenes.title import TitleScene
