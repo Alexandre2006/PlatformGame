@@ -24,6 +24,10 @@ globals.screen = pygame.display.set_mode((globals.SCREEN_WIDTH, globals.SCREEN_H
 # Create clock
 clock = pygame.time.Clock()
 
+# Init Music
+pygame.mixer.init()
+pygame.mixer.music.set_volume(0.7)
+
 # Set window caption
 pygame.display.set_caption("ASCENT (ATCS PlatformGame)")
 

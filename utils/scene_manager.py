@@ -24,6 +24,7 @@ class SceneManager:
     def switch_scene(self, scene_name):
         if scene_name in self.scenes:
             self.current_scene = self.scenes[scene_name]
+            self.current_scene.switch_to()
         else:
             print(f"Scene '{scene_name}' does not exist.")
 

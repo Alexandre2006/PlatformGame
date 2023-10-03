@@ -78,6 +78,11 @@ class DeathScene(SceneBase):
         pygame.draw.rect(globals.screen, exit_box_color, (exit_box_x, exit_box_y, exit_box_width, exit_box_height))
         exit_button = self.button_font.render("Quit Game", True, (0, 0, 0))
         globals.screen.blit(exit_button, (exit_button_x, exit_button_y))
+    
+    def switch_to(self):
+        # Play music
+        pygame.mixer.music.load("./shared/music/death.wav")
+        pygame.mixer.music.play(-1)
 
     def handle_events(self, events):        
         pass # Title scene does not handle any events

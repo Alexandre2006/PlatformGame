@@ -10,5 +10,8 @@ class SceneBase:
     def render(self):
         pass
 
+    def switch_to(self):
+        pass
+
     def handle_events(self, events):
         pass

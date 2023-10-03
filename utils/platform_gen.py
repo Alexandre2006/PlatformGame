@@ -35,7 +35,7 @@ class PlatformGenerator():
         plat1 = Platform(0, 0, plat1_type, plat1_width, 0)
 
         plat2_width = PlatformGenerator.randWidth()
-        plat2_type = Platform.WIDTH_THIN
+        plat2_type = 1
         plat2_effect = None
         if not has_effect:
             plat2_effect = PlatformGenerator.randEffectType()

@@ -98,6 +98,11 @@ class GameScene(SceneBase):
         for i in self.platforms:
             for j in range(0, i.width, 80):
                 globals.screen.blit(i.getPlatformImage(), (i.x + j, self.camera.calculate_pygame_pos(i.y)))
+    
+    def switch_to(self):
+        # Play music
+        pygame.mixer.music.load("./shared/music/climb.wav")
+        pygame.mixer.music.play(-1)
 
     def handle_events(self, events):
         pass
