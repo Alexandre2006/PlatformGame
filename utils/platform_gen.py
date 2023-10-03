@@ -16,7 +16,7 @@ class PlatformGenerator():
 
     def randEffectType():
         random_num = random.random();
-        if random_num > 0.95:
+        if random_num > 0.90:
             return Platform.TYPE_BOOST
         if random_num > 0.80:
             return Platform.TYPE_SPIKE
@@ -30,7 +30,11 @@ class PlatformGenerator():
         plat1_type = PlatformGenerator.randFloorType()
         plat1_effect = PlatformGenerator.randEffectType()
         if plat1_effect != None:
+            plat1_type = plat1_effect
             has_effect = True
+        if plat1_width == Platform.WIDTH_THICK:
+            plat1_width = Platform.WIDTH_NORMAL
+        
         
         plat1 = Platform(0, 0, plat1_type, plat1_width, 0)
 
@@ -40,6 +44,7 @@ class PlatformGenerator():
         if not has_effect:
             plat2_effect = PlatformGenerator.randEffectType()
         if plat2_effect != None:
+            plat2_type = plat2_effect
             has_effect = True
         
         plat2 = Platform(400 - ((plat2_width * 80) / 2), 0, plat2_type, plat2_width, 0)
@@ -49,6 +54,10 @@ class PlatformGenerator():
         plat3_effect = None
         if not has_effect:
             plat3_effect = PlatformGenerator.randEffectType()
+        if plat3_effect != None:
+            plat3_type = plat3_effect
+        if plat3_width == Platform.WIDTH_THICK:
+            plat3_width = Platform.WIDTH_NORMAL
         
         plat3 = Platform(800 - (plat3_width * 80), 0, plat3_type, plat3_width, 0)
         
@@ -62,6 +71,7 @@ class PlatformGenerator():
         plat1_effect = PlatformGenerator.randEffectType()
         if plat1_effect != None:
             has_effect = True
+            plat1_type = plat1_effect
         
         plat1 = Platform(200 - ((plat1_width * 80) / 2), 0, plat1_type, plat1_width, 0)
 
@@ -70,6 +80,8 @@ class PlatformGenerator():
         plat2_effect = None
         if not has_effect:
             plat2_effect = PlatformGenerator.randEffectType()
+        if plat2_effect != None:
+            plat2_type = plat2_effect
         
         plat2 = Platform(600 - ((plat2_width * 80) / 2), 0, plat2_type, plat2_width, 0)
         

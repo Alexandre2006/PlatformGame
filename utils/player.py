@@ -66,10 +66,13 @@ class Player:
         if self.checkPlatformPerfectCollision(platforms) != None:
             return True
     
-    def jump(self, angle):
+    def jump(self, angle, platforms):
+        mult = 1
+        if (self.checkPlatformPerfectCollision(platforms)) != None and self.checkPlatformPerfectCollision(platforms).type == Platform.TYPE_BOOST:
+            mult = 2
         angle = abs(angle)
-        self.y_velocity = (1250 * math.sin(angle))
-        self.x_velocity = 500 * math.cos(angle)
+        self.y_velocity = (1250 * mult * math.sin(angle))
+        self.x_velocity = 500 * mult * math.cos(angle)
         self.y += 1
 
     def update(self, dt, platforms):
@@ -79,9 +82,7 @@ class Player:
         # Check for collisions with platforms
         perfect_collision = self.checkPlatformPerfectCollision(platforms)
         if perfect_collision != None:
-            if perfect_collision.type == Platform.TYPE_BOOST:
-                self.y_velocity = 20
-            elif perfect_collision.type == Platform.TYPE_SPIKE:
+            if perfect_collision.type == Platform.TYPE_SPIKE:
                 self.dead = True
             elif perfect_collision.type == Platform.TYPE_ICE:
                 self.x_velocity *= 0.95
