@@ -1,4 +1,5 @@
 # Base Scene class
+# Entirely written by ChatGPT, modified by humans
 class SceneBase:
     def __init__(self):
         pass

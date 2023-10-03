@@ -1,4 +1,5 @@
-# File written by Copilot
+# Main File
+# Entirely written by humans, with assistance from Copilot (75% human, 25% AI)
 
 import pygame
 from pygame.locals import *

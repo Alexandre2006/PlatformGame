@@ -1,11 +1,13 @@
+# Camera Class
+# Entirely written by humans
+
 class Camera:
     def __init__(self):
-        self.x = 0
         self.y = 0
     
-    def move_to(self, x, y):
-        self.x = x
-        self.y = y
+    def move_to(self, y):
+        if self.y < y:
+            self.y = y
     
-    def calculate_pygame_pos(self, x, y):
-        return (x - self.x, y - self.y)
+    def calculate_pygame_pos(self, y):
+        return (y - self.y)

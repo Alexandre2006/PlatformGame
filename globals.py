@@ -1,3 +1,5 @@
+# Globals
+# Entirely written by humans
 def init():
     global screen
     global SCREEN_WIDTH

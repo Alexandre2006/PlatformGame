@@ -1,8 +1,9 @@
+# Title Scene
+# Entirely written by humans with assistance from Copilot (75% human, 25% AI)
 import pygame
 import globals
 
 from utils.scene import SceneBase
-
 
 class TitleScene(SceneBase):
     def __init__(self):
