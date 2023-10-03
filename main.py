@@ -23,7 +23,7 @@ globals.screen = pygame.display.set_mode((globals.SCREEN_WIDTH, globals.SCREEN_H
 clock = pygame.time.Clock()
 
 # Set window caption
-pygame.display.set_caption("Platform Game")
+pygame.display.set_caption("ASCENT (ATCS PlatformGame)")
 
 # Create scene manager
 scene_manager = SceneManager()
