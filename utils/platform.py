@@ -46,8 +46,8 @@ class Platform:
 
         # Check if platform is off screen
         if self.x < 0:
-            x = 0
-            x_velocity *= -1
+            self.x = 0
+            self.x_velocity *= -1
         
         if (self.x + self.width) > 800:
             self.x = 800 - self.width

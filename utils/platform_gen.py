@@ -90,9 +90,11 @@ class PlatformGenerator():
         plat_width = PlatformGenerator.randWidth()
         plat_type = PlatformGenerator.randFloorType()
 
-        plat1 = Platform(0, 0, plat_type, plat_width, 2)
-        plat2 = Platform(400 - ((plat_width * 80) / 2), 0, plat_type, plat_width, 2)
-        plat3 = Platform(800 - (plat_width * 80), 0, plat_type, plat_width, -2)
+        speed = random.randint(100, 300)
+
+        plat1 = Platform(0, 0, plat_type, plat_width, speed)
+        plat2 = Platform(400 - ((plat_width * 80) / 2), 0, plat_type, plat_width, speed)
+        plat3 = Platform(800 - (plat_width * 80), 0, plat_type, plat_width, -speed)
 
         platforms = [plat1, plat2, plat3]
         return [random.choice(platforms)]

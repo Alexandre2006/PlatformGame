@@ -90,6 +90,8 @@ class Player:
                 self.x_velocity *= 0.8
                 self.y_velocity = 0
 
+            self.x += perfect_collision.move_player_by
+
         # Update position based on velocity
         self.x += self.x_velocity * dt
         self.y += self.y_velocity * dt
