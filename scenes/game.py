@@ -6,7 +6,7 @@ import pygame
 import globals
 from utils.camera import Camera
 from utils.platform import Platform
-from utils.platform import platform_templates
+from utils.platform_gen import PlatformGenerator
 from utils.player import Player
 
 from utils.scene import SceneBase
@@ -25,7 +25,6 @@ class GameScene(SceneBase):
             Platform(0, 1000, Platform.TYPE_ICE, platform_width_type=Platform.WIDTH_THICK, platform_x_velocity=0),
             Platform(280, 1000, Platform.TYPE_SPIKE, platform_width_type=Platform.WIDTH_THIN, platform_x_velocity=0),
             Platform(560, 1000, Platform.TYPE_ICE, platform_width_type=Platform.WIDTH_THICK, platform_x_velocity=0),
-
             ]
 
     def update(self, dt):
@@ -62,11 +61,9 @@ class GameScene(SceneBase):
                 greatest_height = i.y
     
         for i in range(0, len(heights_removed)):
-            plat_template = random.choice(platform_templates)
+            plat_template = PlatformGenerator.getPlatforms()
             for j in plat_template:
                 j.y = greatest_height + ((i+1) * 300)
-                if j.type == Platform.TYPE_GRASS:
-                    j.type = random.choice([Platform.TYPE_GRASS, Platform.TYPE_ICE])
                 self.platforms.append(j)
         
         # Update platforms
