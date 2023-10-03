@@ -7,7 +7,6 @@ from utils.scene import SceneBase
 class TitleScene(SceneBase):
     def __init__(self):
         self.title_font = pygame.font.Font("./shared/fonts/Pixeboy.ttf", 32)
-        SceneBase.__init__(self)
 
     def update(self, dt):
         self.dt = dt
