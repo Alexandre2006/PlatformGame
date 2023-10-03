@@ -1,11 +1,13 @@
 # Player Class
 # Entirely written by humans with assistance from Copilot (75% human, 25% AI)
 
+import pygame
 import globals
 
 class Player:
     CHARACTER_WIDTH = 80
     CHARACTER_HEIGHT = 160
+    IMAGE = pygame.image.load("./shared/player/player.png")
 
     def __init__(self):
         self.x = 0

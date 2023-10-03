@@ -27,13 +27,13 @@ clock = pygame.time.Clock()
 pygame.display.set_caption("ASCENT (ATCS PlatformGame)")
 
 # Create scene manager
-scene_manager = SceneManager()
+globals.scene_manager = SceneManager()
 
 # Register scenes
-scene_manager.register_scene("title", TitleScene())
+globals.scene_manager.register_scene("title", TitleScene())
 
 # Switch to the first scene
-scene_manager.switch_scene("title")
+globals.scene_manager.switch_scene("title")
 
 # Game loop
 while True:
@@ -47,10 +47,10 @@ while True:
             exit()
 
     # Update current scene
-    scene_manager.update_current_scene()
+    globals.scene_manager.update_current_scene()
 
     # Render current scene 
-    scene_manager.render_current_scene()
+    globals.scene_manager.render_current_scene()
 
     # Wait for next frame
     clock.tick(60)
