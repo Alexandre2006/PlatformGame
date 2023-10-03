@@ -33,31 +33,34 @@ class Player:
                 return i
 
     def checkPlatformCollision(self, prev_x, prev_y, platforms):
-        # Check for collision with platforms (going down)
+        # Check for collision with platforms (going down) #WORKING ISH
         for i in platforms:
             if prev_y - Player.CHARACTER_HEIGHT >= i.y and self.y - Player.CHARACTER_HEIGHT <= i.y and self.x <= i.x + i.width and self.x + Player.CHARACTER_WIDTH >= i.x:
                 self.y = i.y + Player.CHARACTER_HEIGHT
                 self.y_velocity = 0
                 return True
         
-        # Check for collision with platforms (going up)
+        # Check for collision with platforms (going up) # WORKING
         for i in platforms:
-            if prev_y < i.y and self.y >= i.y and self.x <= i.x + i.width and self.x + Player.CHARACTER_WIDTH >= i.x:
-                self.y = i.y + 160
+            if prev_y < i.y - 80 and self.y >= i.y - 80 and self.x <= i.x + i.width and self.x + Player.CHARACTER_WIDTH >= i.x:
+                print("Up")
+                self.y = i.y - 80
                 self.y_velocity = 0
                 return True
         
         # Check for collision with platforms (going right)
         for i in platforms:
-            if prev_x < i.x and self.x >= i.x and self.y <= i.y + 80 and self.y + Player.CHARACTER_HEIGHT >= i.y:
-                self.x = i.x + i.width
+            if prev_x + Player.CHARACTER_WIDTH < i.x and self.x + Player.CHARACTER_WIDTH >= i.x and prev_y <= i.y + 160 and self.y >= i.y - 80:
+                print("Right")
+                self.x = i.x - Player.CHARACTER_WIDTH
                 self.x_velocity = 0
                 return True
 
         # Check for collision with platforms (going left)
         for i in platforms:
-            if prev_x > i.x and self.x <= i.x and self.y <= i.y + 80 and self.y + Player.CHARACTER_HEIGHT >= i.y:
-                self.x = i.x - Player.CHARACTER_WIDTH
+            if prev_x + Player.CHARACTER_WIDTH >= i.x + i.width and self.x < i.x + i.width and prev_y <= i.y + 160 and self.y >= i.y - 80:
+                print("left")
+                self.x = i.x + i.width
                 self.x_velocity = 0
                 return True
     

@@ -48,7 +48,6 @@ class GameScene(SceneBase):
         # Remove any platforms that are off screen from list
         heights_removed = []
         for i in self.platforms:
-            print(i.y, self.camera.y)
             if i.y < self.camera.y:
                 if i.y not in heights_removed:
                     heights_removed.append(i.y)
